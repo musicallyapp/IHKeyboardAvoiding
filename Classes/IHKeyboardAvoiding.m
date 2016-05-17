@@ -34,6 +34,9 @@ static NSNotification *_lastNotification;
 
 + (void)didChange:(NSNotification *)notification
 {
+    if ([UIApplication sharedApplication].applicationState != UIApplicationStateActive) {
+        return;
+    }
     BOOL isKeyBoardShowing = NO; // isKeyBoardShowing and is it merged and docked.
     BOOL isPortrait = UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]);
     
